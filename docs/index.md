@@ -868,12 +868,12 @@ Configuration
   --package  Path to package.json for config                            [string]
 
 File Handling
-  --ignore, --exclude              Ignore file(s) or glob pattern(s)
-                                                       [array] [default: (none)]
   --extension, --watch-extensions  File extension(s) to load and/or watch
                                                            [array] [default: js]
   --file                           Specify file(s) to be loaded prior to root
                                    suite execution     [array] [default: (none)]
+  --ignore, --exclude              Ignore file(s) or glob pattern(s)
+                                                       [array] [default: (none)]
   --recursive                      Look for tests in subdirectories    [boolean]
   --require, -r                    Require module      [array] [default: (none)]
   --sort, -S                       Sort test files                     [boolean]
@@ -1079,14 +1079,6 @@ Specify an explicit path to a [`package.json` file](#configuring-mocha-nodejs) (
 
 By default, Mocha looks for a `package.json` in the current working directory or nearest ancestor, and will use the first file found (regardless of whether it contains a `mocha` property); to suppress `package.json` lookup, use `--no-package`.
 
-### `--ignore <file|directory|glob>`
-
-Explicitly ignore (exclude) one or more test files, directories or globs (e.g., `some/**/files*`) that would otherwise be loaded.
-
-Files specified using `--file` _are not affected_ by this option.
-
-Can be specified multiple times.
-
 ### `--extension <ext>, --watch-extensions <ext>`
 
 > _Updated in v6.0.0. Previously `--watch-extensions`, but now expanded to affect general test file loading behavior. `--watch-extensions` is now an alias_
@@ -1106,6 +1098,14 @@ Useful if you want to declare, for example, hooks to be run before every test ac
 Files specified this way are not affected by `--sort` or `--recursive`.
 
 Files specified in this way should contain one or more suites, tests or hooks. If this is not the case, consider `--require` instead.
+
+### `--ignore <file|directory|glob>, --exclude <file|directory|glob>,`
+
+Explicitly ignore (exclude) one or more test files, directories or globs (e.g., `some/**/files*`) that would otherwise be loaded.
+
+Files specified using `--file` _are not affected_ by this option.
+
+Can be specified multiple times.
 
 ### `--recursive`
 
